@@ -229,7 +229,7 @@ def operacao_atualizar(categoria):
             if novo_nome:
                 dados[codigo]['nome'] = novo_nome
             if novo_cpf:
-                dados[codigo]['cpf'] = novo_cpf
+                dados[codigo]['CPF'] = novo_cpf
         elif categoria == 'Disciplinas':
             novo_nome = input("Digite o novo nome da disciplina (ou ENTER para manter): ").strip()
             if novo_nome:
