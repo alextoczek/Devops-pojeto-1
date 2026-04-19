@@ -50,7 +50,7 @@ def caminho_arquivo(categoria):
 def salvar_dados(categoria, dados):
     arquivo = caminho_arquivo(categoria)
     if arquivo is None:
-        print(f"Erro: Categoria '{categoria}' desconhecida para salvar.")
+        print(f"Erro: Categoria '{categoria}' inexistente para salvar.")
         return
     with open(arquivo, 'w', encoding='utf-8') as f:
         json.dump(dados, f, indent=4, ensure_ascii=False)
@@ -58,7 +58,7 @@ def salvar_dados(categoria, dados):
 def carregar_dados(categoria):
     arquivo = caminho_arquivo(categoria)
     if arquivo is None:
-        print(f"Erro: Categoria '{categoria}' desconhecida para carregar.")
+        print(f"Erro: Categoria '{categoria}' inexistente para carregar.")
         return {}
     if not os.path.exists(arquivo):
         return {}
