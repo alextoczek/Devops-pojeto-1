@@ -1,4 +1,4 @@
-## projeto de python da  Disciplina: Raciocínio Computacional (11100010563_20251_20)
+
 ## Alex Silva toczek
 from datetime import date
 import json
