@@ -253,7 +253,7 @@ def operacao_atualizar(categoria):
         print(f"{nomes_singulares[categoria]} atualizado(a) com sucesso!")
 
     except Exception as e:
-        print("Erro ao atualizar:", e)
+        print("Erro, tente novamente.:", e)
 
 
 def operacao_listar(categoria):
