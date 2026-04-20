@@ -3,6 +3,9 @@ import json
 import os
 
 app = Flask(__name__)
+@app.route('/')
+def home():
+    return jsonify({"mensagem": "API funcionando"})
 
 # carregar dados direto (sem funções separadas)
 def carregar_estudantes():
