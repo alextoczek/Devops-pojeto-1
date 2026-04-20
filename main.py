@@ -1,5 +1,4 @@
-
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import json
 import os
 
@@ -36,7 +35,12 @@ def salvar_dados(categoria, dados):
 
 
 @app.route('/')
-def inicio():
+def pagina_inicial():
+    return render_template('index.html')
+
+
+@app.route('/api')
+def inicio_api():
     return jsonify({
         "mensagem": "API do sistema acadêmico funcionando"
     })
@@ -44,17 +48,17 @@ def inicio():
 
 @app.route('/<categoria>', methods=['GET'])
 def listar(categoria):
-    dados = carregar_dados(categoria)
-    if dados == {} and caminho_arquivo(categoria) is None:
+    if caminho_arquivo(categoria) is None:
         return jsonify({"erro": "Categoria inválida"}), 404
+    dados = carregar_dados(categoria)
     return jsonify(dados)
 
 
 @app.route('/<categoria>/<codigo>', methods=['GET'])
 def buscar_por_codigo(categoria, codigo):
-    dados = carregar_dados(categoria)
     if caminho_arquivo(categoria) is None:
         return jsonify({"erro": "Categoria inválida"}), 404
+    dados = carregar_dados(categoria)
     if codigo not in dados:
         return jsonify({"erro": "Registro não encontrado"}), 404
     return jsonify(dados[codigo])
@@ -135,28 +139,3 @@ def excluir(categoria, codigo):
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
